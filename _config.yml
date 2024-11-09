@@ -1,7 +1,12 @@
-# Jekyll configuration file
+title: Linux kurs
+description: Linux code
+baseurl: "https://alexiandra97.github.io/linux_kurs/"
+url: https://alexiandra97.github.io/linux_kurs/
 
-title: My GitHub Pages
-description: A simple site powered by Jekyll.
-theme: jekyll-theme-slate
+
 markdown: kramdown
 
+theme: minima
+
+plugins:
+  - jekyll-feed
