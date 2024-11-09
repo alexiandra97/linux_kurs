@@ -1,12 +1,3 @@
-title: Linux kurs
-description: Linux code
-baseurl: "https://alexiandra97.github.io/linux_kurs/"
-url: https://alexiandra97.github.io/linux_kurs/
-
-
-markdown: kramdown
-
-theme: minima
-
-plugins:
-  - jekyll-feed
+title: Linux obuka
+description: Linux obuka
+remote_theme: "just-the-docs/just-the-docs"
