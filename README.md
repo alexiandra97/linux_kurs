@@ -7,12 +7,7 @@ Ispod se nalazi kod koji ćemo koristiti na obuci Uvod u Linux u toku sledeće n
 ## Fastqc
 
 
-```python
+<code>
 fastqc -o reports -t 2 <fastq fajl>
-```
-
-
-```python
- 
-```
+</code>
 
