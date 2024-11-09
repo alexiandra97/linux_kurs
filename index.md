@@ -15,9 +15,3 @@ Ispod se nalazi kod koji ćemo koristiti na obuci Uvod u Linux u toku sledeće n
 
 ```bash
 fastqc -o reports -t 2 <fastq fajl>
-
-<pre><code id="bash-code" class="language-bash">
-# Ovo je primer Bash koda
-echo "Hello, World!"
-</code></pre>
-<button class="copy-btn" data-clipboard-target="#bash-code">Kopiraj kod</button>
