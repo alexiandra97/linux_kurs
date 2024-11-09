@@ -1,4 +1,4 @@
-<pre># Vežba SARS-COV-2
+# Vežba SARS-COV-2
 
 Ispod se nalazi kod koji ćemo koristiti na obuci Uvod u Linux u toku sledeće nedelje (utorak, sreda, petak).
 
@@ -15,4 +15,4 @@ fastqc -o reports -t 2 &lt;fastq fajl&gt;
 ```python
  
 ```
-</pre>
+
