@@ -1,0 +1,7 @@
+# Jekyll configuration file
+
+title: My GitHub Pages
+description: A simple site powered by Jekyll.
+theme: jekyll-theme-slate
+markdown: kramdown
+
