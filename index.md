@@ -20,3 +20,4 @@ fastqc -o reports -t 2 <fastq fajl>
 # Ovo je primer Bash koda
 echo "Hello, World!"
 </code></pre>
+<button class="copy-btn" data-clipboard-target="#bash-code">Kopiraj kod</button>
