@@ -1,4 +1,8 @@
+
+---
 layout: default
+title: Moj GitHub Pages Sajt
+---
 
 # Vežba SARS-COV-2
 
