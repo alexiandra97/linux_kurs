@@ -1,3 +1,5 @@
 title: Linux obuka
 description: Linux obuka
 remote_theme: "just-the-docs/just-the-docs"
+search_enabled: false
+nav_enabled: false
