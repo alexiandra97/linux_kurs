@@ -3,8 +3,6 @@ layout: default
 title: Moj GitHub Pages Sajt
 ---
 
-
-
 # Vežba SARS-COV-2
 
 Ispod se nalazi kod koji ćemo koristiti na obuci Uvod u Linux u toku sledeće nedelje (utorak, sreda, petak).
