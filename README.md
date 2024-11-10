@@ -3,6 +3,7 @@
 ## Vežba SARS-COV-2
 
 Ispod se nalazi kod koji ćemo koristiti na obuci Uvod u Linux u toku sledeće nedelje (utorak, sreda, petak).
+
 Između znakova <> se nalaze delovi koda koji treba da se zamene odgovarajućim fajlom.
 
 ### 1. Fastqc
@@ -29,9 +30,9 @@ bwa index reference/sequence.fasta
 
 ### 4. Poravnanje sa referentnim genomom
 ```bash
-bwa mem -t 4 -R
-'@RG\tID:uzorak1\tPL:DNBSEQ\tPU:uzorak1\tLB:mutPCR\tSM
-:uzorak1' reference/sequence.fasta
+bwa mem -t 4 -R \
+'@RG\tID:uzorak1\tPL:DNBSEQ\tPU:uzorak1\tLB:mutPCR\tSM:uzorak1' \
+reference/sequence.fasta \
 clean/uzorak1_?.fq.gz | samtools view -b |samtools
 sort > bam/uzorak1_sortiran.bam
 ```
@@ -49,8 +50,7 @@ bam/uzorak1_filter.bam
 
 ### 7. Qualimap
 ```bash
-qualimap bamqc -bam bam/uzorak1_filter.bam -outdir
-reports/uzorak1
+qualimap bamqc -bam bam/uzorak1_filter.bam -outdir reports/uzorak1
 ```
 
 ### 8. Indeksiranje BAM fajla
@@ -62,3 +62,43 @@ samtools index bam/uzorak1_filter.bam
 ```bash
 fastqc -o reports -t 2 bam/uzorak1_filter.bam
 ```
+
+### 10. Variant calling
+```bash
+freebayes -q 25 -m 60 --min-coverage 30 -f reference/sequence.fasta \
+bam/uzorak1_filter.bam > vcf/uzorak1_raw.vcf
+```
+### 11. Zipovanje i indeksiranje vcf fajla
+```bash
+bgzip vcf/uzorak1_raw.vcf
+bcftools index vcf/uzorak1_raw.vcf.gz
+```
+### 12. Filtriranje vcf fajla
+```bash
+bcftools filter -i 'QUAL>20 && INFO/DP>10' vcf/uzorak1_raw.vcf.gz > \
+vcf/uzorak1_filter.vcf
+```
+
+### 13. Brojanje varijanti
+```bash
+zgrep -c -v "^#" vcf/uzorak1_filter.vcf.gz
+```
+
+### 14. Spike protein (filtriranje po poziciji)
+```bash
+bcftools view -r NC_045512.2:21563-25384 vcf/uzorak1_filter.vcf.gz
+```
+### 15. Vcf bez header-a
+```bash
+bcftools view -H vcf/uzorak1_filter.vcf.gz |wc -l
+```
+### 16. Uključuje varijante sa kvalitetom >=20
+```bash
+bcftools view -H -i 'QUAL>=20' vcf/uzorak1_filter.vcf.gz | wc -l
+```
+### 17. Dobijanje konsenzusne sekvence
+```bash
+bcftools consensus -f reference/sequence.fasta \
+vcf/uzorak1_filter.vcf.gz > fasta/uzorak1.fasta
+```
+
