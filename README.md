@@ -98,6 +98,6 @@ bcftools view -H -i 'QUAL>=20' vcf/uzorak1_filter.vcf.gz | wc -l
 ### 17. Dobijanje konsenzusne sekvence
 ```bash
 bcftools consensus -f reference/<fasta fajl> \
-vcf/uzorak1_filter.vcf.gz > fasta/uzorak1.fasta
+vcf/uzorak1_filter.vcf.gz | sed "s/^>.*$/>uzorak1/g" > fasta/uzorak1.fasta
 ```
 
