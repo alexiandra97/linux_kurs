@@ -64,7 +64,7 @@ fastqc -o reports -t 2 bam/uzorak1_filter.bam
 
 ### 10. Variant calling
 ```bash
-freebayes -q 25 -m 60 --min-coverage 30 -f reference/<fasta fajl> \
+freebayes -p 1 -q 25 -m 60 --min-coverage 30 -f reference/<fasta fajl> \
 bam/uzorak1_filter.bam > vcf/uzorak1_raw.vcf
 ```
 ### 11. Zipovanje i indeksiranje vcf fajla
