@@ -31,8 +31,7 @@ bwa index reference/<fasta fajl>
 ### 4. Poravnanje sa referentnim genomom
 ```bash
 bwa mem -t 4 -R \
-'@RG\tID:uzorak1\tPL:DNBSEQ\tPU:uzorak1\tLB:mutPCR\tSM:uzorak1' \
-reference/<fasta fajl> \
+'@RG\tID:uzorak1\tPL:DNBSEQ\tPU:uzorak1\tLB:mutPCR\tSM:uzorak1' reference/<fasta fajl> \
 clean/uzorak1_?.fq.gz | samtools view -b |samtools sort \
 > bam/uzorak1_sortiran.bam
 ```
