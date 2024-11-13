@@ -131,5 +131,5 @@ echo '##INFO=<ID=GENE,Number=1,Type=String,Description="Gene name">' > gene.head
 
 ### 22. Anotacija
 ```bash
-$ bcftools annotate -a reference/sequence_genes.bed -c CHROM,FROM,TO,GENE -h gene.header vcf/uzorak1_filter.vcf.gz > vcf/uzorak1_anotiran.vcf
+bcftools annotate -a reference/sequence_genes.bed -c CHROM,FROM,TO,GENE -h gene.header vcf/uzorak1_filter.vcf.gz > vcf/uzorak1_anotiran.vcf
 ```
