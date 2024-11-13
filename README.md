@@ -129,7 +129,7 @@ awk -F "\t" 'BEGIN { OFS="\t" } $3=="gene" { split($9,f,";"); gene=f[3]; gsub(/N
 echo '##INFO=<ID=GENE,Number=1,Type=String,Description="Gene name">' > gene.header
 ```
 
-### 22. Anotacija
+### 23. Anotacija
 ```bash
 bcftools annotate -a reference/sequence_genes.bed -c CHROM,FROM,TO,GENE -h gene.header vcf/uzorak1_filter.vcf.gz > vcf/uzorak1_anotiran.vcf
 ```
