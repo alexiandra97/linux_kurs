@@ -116,3 +116,20 @@ bcftools view -H -i 'QUAL>=20' vcf/uzorak1_filter.vcf.gz | wc -l
 gzip -d -k vcf/uzorak1_filter.vcf.gz
 vcf2tsv vcf/uzorak1_filter.vcf vcf/uzorak1_filter.tsv
 ```
+### 20. Preuzimanje gff3
+```bash
+wget -O reference/sequence.gff3 "https://www.ncbi.nlm.nih.gov/sviewer/viewer.cgi?save=file&db=nuccore&report=gff3&id=1798174254"
+```
+### 21. Pravljenje bed fajla
+```bash
+awk -F "\t" 'BEGIN { OFS="\t" } $3=="gene" { split($9,f,";"); gene=f[3]; gsub(/Name=/,"",gene); print $1,$4,$5,gene }' reference/sequence.gff3 > reference/sequence_genes.bed
+```
+### 22. Pravljenje header-a za fajl
+```bash
+echo '##INFO=<ID=GENE,Number=1,Type=String,Description="Gene name">' > gene.header
+```
+
+### 22. Anotacija
+```bash
+$ bcftools annotate -a reference/sequence_genes.bed -c CHROM,FROM,TO,GENE -h gene.header vcf/uzorak1_filter.vcf.gz > vcf/uzorak1_anotiran.vcf
+```
