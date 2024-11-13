@@ -94,9 +94,25 @@ bcftools view -H vcf/uzorak1_filter.vcf.gz |wc -l
 ```bash
 bcftools view -H -i 'QUAL>=20' vcf/uzorak1_filter.vcf.gz | wc -l
 ```
+
 ### 17. Dobijanje konsenzusne sekvence
 ```bash
 bcftools consensus -f reference/<fasta fajl> \
 vcf/uzorak1_filter.vcf.gz | sed "s/^>.*$/>uzorak1/g" > fasta/uzorak1.fasta
 ```
+### 18. Filtriranje vcf fajla
+```bash
+bcftools view -r NC_045512.2:21563-25384 vcf/uzorak1_filter.vcf.gz
+```
+```bash
+bcftools view -H vcf/uzorak1_filter.vcf.gz |wc -l
+```
+```bash
+bcftools view -H -i 'QUAL>=20' vcf/uzorak1_filter.vcf.gz | wc -l
+```
 
+### 19. Konverzija vcf u tsv format
+```bash
+gzip -d -k vcf/uzorak1_filter.vcf.gz
+vcf2tsv vcf/uzorak1_filter.vcf vcf/uzorak1_filter.tsv
+```
