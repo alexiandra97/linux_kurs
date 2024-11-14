@@ -133,3 +133,16 @@ echo '##INFO=<ID=GENE,Number=1,Type=String,Description="Gene name">' > gene.head
 ```bash
 bcftools annotate -a reference/sequence_genes.bed -c CHROM,FROM,TO,GENE -h gene.header vcf/uzorak1_filter.vcf.gz > vcf/uzorak1_anotiran.vcf
 ```
+
+### 24. Filtriranje merged vcf fajla
+```bash
+grep -c -v '^#' omicron-all.vcf
+```
+
+```bash
+bcftools query -H -f '%POS\t%REF\t%ALT\t[GT\t]\n' omicron-all.vcf
+```
+
+```bash
+bcftools query -i 'FORMAT/GT[1]="1" && FORMAT/GT[2]="1"' -f '%POS\t%REF\t%ALT\t[%SAMPLE=%GT\t]\n' omicron-all.vcf
+```
