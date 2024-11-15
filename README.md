@@ -114,7 +114,7 @@ bcftools view -H -i 'QUAL>=20' vcf/uzorak1_filter.vcf.gz | wc -l
 ### 19. Konverzija vcf u tsv format
 ```bash
 gzip -d -k vcf/uzorak1_filter.vcf.gz
-vcf2tsv vcf/uzorak1_filter.vcf vcf/uzorak1_filter.tsv
+vcf2tsv vcf/uzorak1_filter.vcf > vcf/uzorak1_filter.tsv
 ```
 ### 20. Preuzimanje gff3
 ```bash
