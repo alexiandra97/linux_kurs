@@ -136,15 +136,15 @@ bcftools annotate -a reference/sequence_genes.bed -c CHROM,FROM,TO,GENE -h gene.
 
 ### 24. Filtriranje merged vcf fajla
 ```bash
-grep -c -v '^#' omicron-all.vcf
+zgrep -c -v '^#' omicron-all.vcf.gz
 ```
 
 ```bash
-bcftools query -H -f '%POS\t%REF\t%ALT\t[GT\t]\n' omicron-all.vcf
+bcftools query -H -f '%POS\t%REF\t%ALT\t[%GT\t]\n' omicron-all.vcf.gz
 ```
 
 ```bash
-bcftools query -i 'FORMAT/GT[1]="1" && FORMAT/GT[2]="1"' -f '%POS\t%REF\t%ALT\t[%SAMPLE=%GT\t]\n' omicron-all.vcf
+bcftools query -i 'FORMAT/GT[1]="1" && FORMAT/GT[2]="1"' -f '%POS\t%REF\t%ALT\t[%SAMPLE=%GT\t]\n' omicron-all.vcf.gz
 ```
 ```bash
 bcftools query -i 'N_PASS(GT="1") = 1' -f '%POS\t%REF\t%ALT\t[%GT\t]\n' vcf/omicron-all.vcf.gz
@@ -153,7 +153,7 @@ bcftools query -i 'N_PASS(GT="1") = 1' -f '%POS\t%REF\t%ALT\t[%GT\t]\n' vcf/omic
 bcftools view -s K892598,K91621 vcf/omicron-all.vcf.gz
 ```
 ```bash
-bcftools view -H -i 'GENE="S"' vcf/omicron-all.vcf.gz|wc -l
+bcftools view -H -i 'GENE="S"' vcf/omicron-all.vcf.gz | wc -l
 ```
 ```bash
 bcftools view -H -i 'N_PASS(GT="1") = 1' vcf/omicron-all.vcf.gz
