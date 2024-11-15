@@ -146,3 +146,16 @@ bcftools query -H -f '%POS\t%REF\t%ALT\t[GT\t]\n' omicron-all.vcf
 ```bash
 bcftools query -i 'FORMAT/GT[1]="1" && FORMAT/GT[2]="1"' -f '%POS\t%REF\t%ALT\t[%SAMPLE=%GT\t]\n' omicron-all.vcf
 ```
+```bash
+bcftools query -i 'N_PASS(GT="1") = 1' -f '%POS\t%REF\t%ALT\t[%GT\t]\n' vcf/omicron-all.vcf.gz
+```
+```bash
+bcftools view -s K892598,K91621 vcf/omicron-all.vcf.gz
+```
+```bash
+bcftools view -H -i 'GENE="S"' vcf/omicron-all.vcf.gz|wc -l
+```
+```bash
+bcftools view -H -i 'N_PASS(GT="1") = 1' vcf/omicron-all.vcf.gz
+```
+
